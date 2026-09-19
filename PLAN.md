@@ -1,4 +1,4 @@
-# Makaan — Project Plan
+# Makaan - Project Plan
 
 > **Status:** Founding blueprint, v1.0
 > **Date:** 2026-09-19
@@ -35,16 +35,16 @@ India's urban rental market runs on a handshake and a large pile of cash. **₹1
 
 **Makaan is a rental deposit trust protocol.** At its core is one deceptively simple loop:
 
-1. **Capture** the property's condition at move-in and move-out (photos, timestamps, hashes) — an evidence record both sides can trust.
+1. **Capture** the property's condition at move-in and move-out (photos, timestamps, hashes) - an evidence record both sides can trust.
 2. **Assess** the difference with AI (Amazon Bedrock) against a state-law-aware rule set and a city-level repair benchmark: what is protected normal wear and tear, and what is genuine, priced damage.
 3. **Settle** the deposit with an itemized, transparent statement: deposit held, claims, approved deductions, refund owed.
-4. **Keep** the resulting record as a **tenant-owned rental passport** — positive, consent-based, portable, never a blacklist.
+4. **Keep** the resulting record as a **tenant-owned rental passport** - positive, consent-based, portable, never a blacklist.
 
 Long term, the same infrastructure supports a landlord-side guarantee product (deposit insurance/surety via a regulated partner), verified rent history, and a dispute trail fit for the Rent Authority. We take no cut of disputed money, we do not hold deposits, and we do not score tenants for housing access.
 
 ### Why this wins the hackathon
 
-"First Commit" judges four things: does it solve a real problem, is AWS at the core, what did you learn, and does it work (three-minute video; there is no live demo). The deposit loop is visually demonstrable in seconds, deeply AWS-native (S3 evidence, Bedrock vision, DynamoDB ledger, Lambda/API Gateway, Cognito), costs about **$0.15–$0.60/month** at demo scale (Nova Lite), and has a story every urban Indian knows first-hand. The same build is also the first module of a real company — nothing is thrown away.
+"First Commit" judges four things: does it solve a real problem, is AWS at the core, what did you learn, and does it work (three-minute video; there is no live demo). The deposit loop is visually demonstrable in seconds, deeply AWS-native (S3 evidence, Bedrock vision, DynamoDB ledger, Lambda/API Gateway, Cognito), costs about **$0.15–$0.60/month** at demo scale (Nova Lite), and has a story every urban Indian knows first-hand. The same build is also the first module of a real company - nothing is thrown away.
 
 ### The three things that must be true by Sunday
 
@@ -64,12 +64,12 @@ Long term, the same infrastructure supports a landlord-side guarantee product (d
 
 ### Why the current name must go
 
-- **"TrustRent" is taken** — trustrent.in exists as a rental brand, and the name is exactly the pattern to avoid: two generic words jammed together, forgettable, unownable, and it reads like an AI-named hackathon project.
+- **"TrustRent" is taken** - trustrent.in exists as a rental brand, and the name is exactly the pattern to avoid: two generic words jammed together, forgettable, unownable, and it reads like an AI-named hackathon project.
 - The current repo also carries the name "RentTrust" in the UI, which is the same problem reversed.
 
 ### Naming principles
 
-1. **One word, classically memorable.** Think Amazon, Apple, Google, Airbnb — not `TenantHunter`, `RentGuard`, `TenLaw`, `DepositShield`.
+1. **One word, classically memorable.** Think Amazon, Apple, Google, Airbnb - not `TenantHunter`, `RentGuard`, `TenLaw`, `DepositShield`.
 2. **Not descriptive of the software.** The name should be a brand, not a feature list. It must survive the company expanding beyond deposits.
 3. **Sayable by everyone.** An Indian landlord, a Bengaluru techie, a US investor, and an App Store search box.
 4. **Has a story** you can tell in one line.
@@ -79,11 +79,11 @@ Long term, the same infrastructure supports a landlord-side guarantee product (d
 
 *Pronunciation: muh-KAAN. Hindi/Urdu: मकान / مکان. From Persian makān (a place, a dwelling).*
 
-**Meaning:** house, home, dwelling — the word every Indian already uses for the place they live in. The team chose it; this plan adopts it from here on.
+**Meaning:** house, home, dwelling - the word every Indian already uses for the place they live in. The team chose it; this plan adopts it from here on.
 
 **Why it works:**
 
-- **It names the subject, not the software.** Other candidates explained a feature; Makaan names the thing people actually care about — the home — the way Airbnb never says "bed" and Amazon never says "books".
+- **It names the subject, not the software.** Other candidates explained a feature; Makaan names the thing people actually care about - the home - the way Airbnb never says "bed" and Amazon never says "books".
 - **One word, two syllables, universal in India.** Understood from Kashmir to Kanyakumari and across every income segment; no translation, no explanation, no regional friction.
 - **Warm and human.** It works as a consumer brand for tenants and as a B2B product for property managers, without sounding like a compliance tool.
 - **Global-friendly.** Non-Indian investors and partners can say and spell it; it can travel later.
@@ -91,13 +91,13 @@ Long term, the same infrastructure supports a landlord-side guarantee product (d
 
 **Risks and honest caveats (clear these before launch):**
 
-- **`makaan.com` resolves and is associated with an established property portal** — a real search and potential trademark collision. Do not build the brand on it.
+- **`makaan.com` resolves and is associated with an established property portal** - a real search and potential trademark collision. Do not build the brand on it.
 - Domain reality as of 2026-09-19: only **`makaan.in` appears unregistered**; `makaan.com`, `makaan.co`, `makaan.app`, `makaan.co.in`, and `getmakaan.com` all resolve (taken or parked). **Secure `makaan.in` immediately**; if unavailable, use a distinctive lockup (`withmakaan.com`, `makaanhq.com`, `makaan.rent`) rather than a misspelling.
-- As a common descriptive word it may have weaker trademark distinctiveness in classes 35/36/42/43; use a **stylised wordmark** and a distinctive descriptor: **"Makaan — Rental Deposit Trust"**. Counsel sign-off before paid marketing.
+- As a common descriptive word it may have weaker trademark distinctiveness in classes 35/36/42/43; use a **stylised wordmark** and a distinctive descriptor: **"Makaan - Rental Deposit Trust"**. Counsel sign-off before paid marketing.
 - Expect search noise from the 1969 Hindi film *Makaan* and from property portals; own the SEO with the descriptor.
 - Spelling drift (Makaan/Makhan/Makan) needs defensive domains and redirects.
 
-**Runner-up names considered:** Amanat (deposit/trust), Praman (proof), Pacta (agreements), Fidem (faith), Tijori (safe), Sulha (settlement), Nyas (trust). Recorded here so future team members understand why Makaan was chosen — the subject of the product, not the mechanism.
+**Runner-up names considered:** Amanat (deposit/trust), Praman (proof), Pacta (agreements), Fidem (faith), Tijori (safe), Sulha (settlement), Nyas (trust). Recorded here so future team members understand why Makaan was chosen - the subject of the product, not the mechanism.
 
 ### Name clearance checklist (do before any public launch)
 
@@ -127,11 +127,11 @@ All figures below are from the sources listed in §13. Where a number is contest
 ### 3.2 The structural cause: no baseline, no standard, no proof
 
 - Nobody photographs the flat properly at move-in, and if they do, the photos sit in a phone gallery with no timestamp integrity, no shared record, and no agreed condition report.
-- What counts as "normal wear and tear" is a legal principle with no operational definition. The Model Tenancy Act's Section 15 requires premises to be kept in as good condition "except for normal wear and tear" — but no tool turns that into an itemized, defensible number.
+- What counts as "normal wear and tear" is a legal principle with no operational definition. The Model Tenancy Act's Section 15 requires premises to be kept in as good condition "except for normal wear and tear" - but no tool turns that into an itemized, defensible number.
 - Repair benchmarks are folklore ("painting = ₹25,000"), not data. There is no widely accepted, city-level rate card.
 - Tenants' most common practical advice to each other is "take videos at move-in and move-out". That is the demand signal for this product; we are productising the advice.
 
-### 3.3 Landlords are not villains — they are under-served too
+### 3.3 Landlords are not villains - they are under-served too
 
 - **Screening is broken.** Police verification is mandatory in many states but poorly enforced and poorly processed; a Delhi audit found forms "gathering dust". CIBIL checks are used ad hoc and can trigger rejection below ~600 in the formal segment. Commercial screening (e.g., RentenPe's ORA, ₹499/tenant) is emerging exactly because the gap is real.
 - **Defaults and overstays are expensive.** Documented cases: Chennai landlord paying an EMI while a tenant skipped rent for six of nine months and refused to vacate; a commercial tenant withholding ₹3.5 lakh to leave. Legal eviction can take two years.
@@ -140,9 +140,9 @@ All figures below are from the sources listed in §13. Where a number is contest
 
 ### 3.4 Fraud is industrialising
 
-- **Catena Homes, Bengaluru (Sep 2025):** ₹20–50 lakh per tenant, ₹50+ crore reported, owners unaware — a lease Ponzi.
+- **Catena Homes, Bengaluru (Sep 2025):** ₹20–50 lakh per tenant, ₹50+ crore reported, owners unaware - a lease Ponzi.
 - **Jones Asset Management, Bengaluru (May 2026):** 300+ victims, ₹100–200 crore, 2–4.2% monthly returns promised, MD absconding.
-- Listing-level scams are constant: ₹2,500 "entry card" to view a flat, ₹5,000 token to "block" a fake listing, fake NRI rentals. India registered **1,01,928 cybercrime cases in 2024 (+18% YoY)**, 72.6% fraud-motivated. There is no rental-specific national statistic — itself a sign of how invisible this is.
+- Listing-level scams are constant: ₹2,500 "entry card" to view a flat, ₹5,000 token to "block" a fake listing, fake NRI rentals. India registered **1,01,928 cybercrime cases in 2024 (+18% YoY)**, 72.6% fraud-motivated. There is no rental-specific national statistic - itself a sign of how invisible this is.
 
 ### 3.5 Discrimination we refuse to industrialise
 
@@ -157,13 +157,13 @@ The Model Tenancy Act 2021 is a **model law**. As of 2026, only a minority of st
 - **MTA Section 11(1)(a):** residential deposit must not exceed **two months' rent**; **11(2):** refund on taking vacant possession, after due deductions.
 - **MTA Section 15:** repair/maintenance duties, "except for normal wear and tear"; landlord may deduct repair costs from the deposit under 15(3) after notice.
 - **MTA Section 17:** 24-hour written notice for landlord entry.
-- **MTA Section 21:** eviction — *not* the notice or deposit rule, despite what the old repo's agreement generator claimed.
+- **MTA Section 21:** eviction - *not* the notice or deposit rule, despite what the old repo's agreement generator claimed.
 - Where adopted, registration/intimation to a Rent Authority is required (e.g., Tamil Nadu's `tenancy.tn.gov.in`, 90-day window, ₹100 service charge; UP's `upawas.up.gov.in`).
 - News cycles in late 2025 reported "new national rent rules" (2-month cap, 60-day registration). These reports conflated the MTA template with law. **Do not build a national cap feature.** Build state-aware rules.
 
 ### 3.7 What people want (demand signals)
 
-- **75% of surveyed Bengaluru tenants would pay 5–10% more rent for a substantially lower deposit** — the strongest willingness-to-pay signal in the research.
+- **75% of surveyed Bengaluru tenants would pay 5–10% more rent for a substantially lower deposit** - the strongest willingness-to-pay signal in the research.
 - Tenants ask for: documented move-in/move-out evidence, written deduction rules, a refund backed by something real, and alternatives to lump-sum deposits.
 - Landlords ask for: verified identity and income, default protection, faster lawful exit, deposit that actually covers damage, and help re-letting.
 - Internationally, this is a proven category: **Rhino + Jetty merged in Feb 2025 (6M units under management)**, **TheGuarantors took a Warburg Pincus majority investment (Mar 2026)**, **Esusu raised a $50M Series C at a $1.2B valuation (Dec 2025)**. The failures are equally instructive: **Fronted shut down (2023)** because deposit loans were uneconomic, and **Canopy went into administration (Feb 2026)**. Consumer advocates (NCLC, 2026) criticise deposit alternatives whose non-refundable fees can exceed a returned deposit. **Design rule: if the tenant loses money when nothing is wrong, the product is the problem.**
@@ -183,7 +183,7 @@ People are already circling this problem, which validates the market and raises 
 | **RentSevak Passport** | Tenant trust score + passport | Passport concept validated |
 | **Global** | Rhino/Jetty, Obligo, TheGuarantors, flatfair, Reposit, Esusu | Proven models, known failure modes |
 
-**Gap:** no one owns the *evidence layer* — the neutral, verifiable, state-aware record of condition and fair deduction. Everyone is either a marketplace, a lender, or a score. Evidence is the missing primitive, and it is the one that AI makes newly cheap.
+**Gap:** no one owns the *evidence layer* - the neutral, verifiable, state-aware record of condition and fair deduction. Everyone is either a marketplace, a lender, or a score. Evidence is the missing primitive, and it is the one that AI makes newly cheap.
 
 ---
 
@@ -208,7 +208,7 @@ People are already circling this problem, which validates the market and raises 
 **Judging (official wording, no numeric weights published):**
 
 1. **Problem/impact:** "Does it solve a real problem? And what changes for the people on the other side of it? A small problem solved well beats a big one solved vaguely."
-2. **AWS at the core — mandatory to win:** "Using an AWS open-source project or AWS services is mandatory... AWS belongs at the core of the project and not in the README."
+2. **AWS at the core - mandatory to win:** "Using an AWS open-source project or AWS services is mandatory... AWS belongs at the core of the project and not in the README."
 3. **Learning:** "Tell us what you learned, and it counts towards your score."
 4. **Execution:** "Does it work? Not perfect, not polished. Working. One feature that runs beats five that almost do."
 5. **Demo video:** three minutes, recorded. "There is no live demo, so the video is what the judges see."
@@ -222,7 +222,7 @@ People are already circling this problem, which validates the market and raises 
 
 - **Old projects are disqualified, even if rewritten.** The current repo's 20 commits are all dated **2026-09-16**, before the Sept 17 kickoff. Submitting it as-is is a disqualification risk.
 - **The project must use AWS, and the demo video must show it.**
-- **A public repo is mandatory** — which conflicts with the "private repo" ambition. The hackathon submission repo must be public; the company's long-term codebase can be private afterwards.
+- **A public repo is mandatory** - which conflicts with the "private repo" ambition. The hackathon submission repo must be public; the company's long-term codebase can be private afterwards.
 - Open-source libraries, frameworks, APIs, boilerplate and starter templates are allowed; what is judged is what you add during the window.
 - AI coding tools are allowed and must be disclosed.
 - Free tier usage is fully valid for every track; new accounts get up to $200 in credits; organizers also mention a $100 participant credit and "request more if needed".
@@ -231,13 +231,13 @@ People are already circling this problem, which validates the market and raises 
 
 The event's own rules: *"Old projects do not count. Build something new once the clock starts. If you began the project before the hackathon opened, it does not qualify, even if you rewrote it."* And: *"a repository whose history does not match the event dates disqualifies the whole team."*
 
-**Decision: do not submit `tenant-market-trust`.** Create a new public repository (suggested: `makaan-first-commit`) and build the thin judged slice fresh, inside the window. Use the old repo as a design reference only. If the team has run out of window or appetite, submit nothing this weekend — a disqualification is worse than an honest skip, and the plan stands on its own for the startup.
+**Decision: do not submit `tenant-market-trust`.** Create a new public repository (suggested: `makaan-first-commit`) and build the thin judged slice fresh, inside the window. Use the old repo as a design reference only. If the team has run out of window or appetite, submit nothing this weekend - a disqualification is worse than an honest skip, and the plan stands on its own for the startup.
 
 ### 4.3 Winning strategy
 
 **Target: Ship It (grand prize) + Best UI.** The existing UI work proved the team can produce a polished interface; the highest-probability combination is a deployed AWS app with a beautiful, simple, three-screen demo.
 
-**The judged feature — "the deposit audit" — and nothing else:**
+**The judged feature - "the deposit audit" - and nothing else:**
 
 > A landlord and tenant capture move-in and move-out photos. Makaan's Bedrock vision audit classifies each difference as **protected wear and tear (₹0 deductible)** or **genuine damage (deductible at city benchmark rates)**, produces an itemized deposit statement, and gives the tenant a downloadable record. A ₹25,000 "full repainting" claim collapses to ₹0 with a statutory explanation; a cracked tile becomes a defensible ₹1,800 deduction.
 
@@ -257,7 +257,7 @@ Why this is the right slice:
 
 | Component | Choice | Free tier / cost |
 |---|---|---|
-| Auth | **Cognito Essentials, email/password** (no SMS) | 10,000 MAU free, always. Cognito's default email sender has a daily cap — seed demo users instead of relying on verification emails |
+| Auth | **Cognito Essentials, email/password** (no SMS) | 10,000 MAU free, always. Cognito's default email sender has a daily cap - seed demo users instead of relying on verification emails |
 | Frontend | **Amplify Hosting** (React + Vite) | 1,000 build min + 5 GB storage + 15 GB served for 12 months |
 | API | **API Gateway HTTP API** + one Node 20 Lambda (esbuild bundle) | 1M calls free (12 mo); Lambda 1M req + 400k GB-s always free |
 | Data | **DynamoDB** single table, on-demand or 25 WCU/RCU | storage free; on-demand request units are cents |
@@ -300,7 +300,7 @@ Why this is the right slice:
 
 | Time | Beat | Content |
 |---|---|---|
-| 0:00–0:25 | **Problem** | "Indian renters hand over six to ten months of rent as deposit. ₹1.26 lakh crore is stuck. Only a third of Bengaluru tenants get it all back — because nobody ever recorded what the flat looked like on day one." Show a real deduction case (₹1,00,000 → ₹19,604). |
+| 0:00–0:25 | **Problem** | "Indian renters hand over six to ten months of rent as deposit. ₹1.26 lakh crore is stuck. Only a third of Bengaluru tenants get it all back - because nobody ever recorded what the flat looked like on day one." Show a real deduction case (₹1,00,000 → ₹19,604). |
 | 0:25–1:00 | **Move-in** | Landlord logs in, creates the flat, captures move-in photos. Show the hash/timestamp badge: "this is the evidence record." |
 | 1:00–2:00 | **Move-out + audit** | Tenant captures exit photos; click "Run audit". Bedrock classifies: wall scuffs and paint fade = **protected wear and tear, ₹0**; cracked vitrified tile = **₹1,800** at Bengaluru benchmark. The ₹25,000 painting claim becomes ₹0; total deduction ₹1,800. |
 | 2:00–2:30 | **Settlement + AWS** | Statement: deposit ₹1,00,000 → refund ₹98,200. One architecture slide: S3, Bedrock Nova Lite, DynamoDB, Lambda, API Gateway, Cognito, Amplify; cost "$0.15 a month at this scale, free tier, Nova Lite." |
@@ -343,9 +343,9 @@ Move-in capture ──► sealed evidence record (photos, time, hash, consent)
         │
         ▼
 Move-out capture ──► AI-assisted audit:
-        │              - protected wear & tear → ₹0
-        │              - genuine damage → benchmark-priced
-        │              - uncertain → human review
+        │            - protected wear & tear → ₹0
+        │            - genuine damage → benchmark-priced
+        │            - uncertain → human review
         ▼
 Itemized deposit statement ──► acceptance by both parties
         │
@@ -406,10 +406,10 @@ Itemized deposit statement ──► acceptance by both parties
 
 - **Model:** Amazon Bedrock, **Nova Lite** first (cheap, multimodal, ap-south-1 available); upgrade to a stronger vision model only where accuracy demands it. Claude Haiku (~$1/$5 per 1M tokens) is ~10–18× the cost at this task; not the default.
 - **Input:** before + after photos per area, area name, claim amount, state rule context, benchmark table.
-- **Output contract:** strict JSON — per finding: `{area, category, classification (WEAR_AND_TEAR | DAMAGE | UNCERTAIN | PRE_EXISTING), severity, benchmark_low, benchmark_high, recommended_deduction, confidence, rationale, statutory_note, follow_up_question}`. Validate against a schema; reject and fall back if invalid.
+- **Output contract:** strict JSON - per finding: `{area, category, classification (WEAR_AND_TEAR | DAMAGE | UNCERTAIN | PRE_EXISTING), severity, benchmark_low, benchmark_high, recommended_deduction, confidence, rationale, statutory_note, follow_up_question}`. Validate against a schema; reject and fall back if invalid.
 - **Statutory framing:** cite the applicable state law text; always label output "advisory assessment, not a legal determination".
 - **Deterministic fallback:** a rule engine (area + damage type + benchmark table) behind the same interface. If Bedrock is unavailable or slow, the user still gets a valid statement, labelled as needing review. This is also the hackathon safety net.
-- **Benchmarks:** versioned JSON, city × item, with source and date. Start with 12 items (painting per sq ft, tile replacement, switchboard, exhaust fan, counter burn, marble polish, door scratch, etc.). Expand with real claim data over time — this dataset is a moat.
+- **Benchmarks:** versioned JSON, city × item, with source and date. Start with 12 items (painting per sq ft, tile replacement, switchboard, exhaust fan, counter burn, marble polish, door scratch, etc.). Expand with real claim data over time - this dataset is a moat.
 - **Human review:** mandatory above ₹25,000 or confidence < 0.7 in v1; the reviewer sees the evidence and the AI's reasoning, and their decision is what gets sealed.
 - **Evaluation:** a small golden set of photographed scenarios with expected classifications; measure agreement before each model/prompt change. Keep a "model decisions" changelog.
 
@@ -500,7 +500,7 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 
 - Cognito Essentials, email/password for the demo; later email OTP (custom auth) or passkeys.
 - **No SMS.** Documented reason: India DLT registration + SMS sandbox + 18× international fallback pricing.
-- **Identity verification (v1):** DigiLocker and/or Aadhaar Paperless Offline eKYC (signed XML) — never raw Aadhaar numbers; consent flows per DPDP. Aadhaar eKYC through an AUA/KUA partner (sub-AUA route) only when actually needed; start with DigiLocker + document checks.
+- **Identity verification (v1):** DigiLocker and/or Aadhaar Paperless Offline eKYC (signed XML) - never raw Aadhaar numbers; consent flows per DPDP. Aadhaar eKYC through an AUA/KUA partner (sub-AUA route) only when actually needed; start with DigiLocker + document checks.
 - Roles: tenant, landlord, reviewer (internal), admin. Reviewer decisions are logged.
 
 ### 6.7 Evidence integrity
@@ -519,7 +519,7 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 
 ### 6.9 Infrastructure and deployment
 
-- **IaC:** AWS SAM (esbuild) for API/Lambda/DynamoDB/S3/Cognito; Amplify Hosting for the SPA; all in `infra/`. Alternative: CDK if the team prefers TypeScript IaC — decide once, do not mix.
+- **IaC:** AWS SAM (esbuild) for API/Lambda/DynamoDB/S3/Cognito; Amplify Hosting for the SPA; all in `infra/`. Alternative: CDK if the team prefers TypeScript IaC - decide once, do not mix.
 - **Environments:** one `prod` for the hackathon; add `dev` only after the event.
 - **CI:** GitHub Actions running `typecheck + vitest + sam validate` on PRs; deploy on `main` via OIDC role (no long-lived keys). Add after the hackathon if time is short.
 - **Secrets:** none in the repo; Lambda env vars for resource names only; S3/DynamoDB access via IAM roles.
@@ -545,7 +545,7 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 - **Unit:** deposit statement math, benchmark capping, state-rule selection, hash/consent logic. This is where bugs hurt.
 - **Contract:** audit JSON schema validation + fallback engine equivalence.
 - **Integration:** one golden path through the API (create → upload → audit mocked → statement) against DynamoDB Local.
-- **No fake tests.** Every test must import the real code it claims to test (the old repo's frontend tests defined their own helper functions and proved nothing — the mistake will not repeat).
+- **No fake tests.** Every test must import the real code it claims to test (the old repo's frontend tests defined their own helper functions and proved nothing - the mistake will not repeat).
 
 ### 6.13 Stack decisions
 
@@ -566,14 +566,14 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 ### 7.1 Market
 
 - **~27.5% of urban households rent** (Census 2011, the latest census-based figure); 100M+ urban renters implied by 2025 population, with the overwhelming majority in the informal segment.
-- Formal/organised rental housing revenue is estimated at **$2.8B (2025) → $3.73B (2032)**; the rental *search* demand potential is estimated at **₹7.53 lakh crore/year**; online rental startups have raised **$1.93B** cumulatively, but 2025 funding fell ~55% — the market rewards focus.
+- Formal/organised rental housing revenue is estimated at **$2.8B (2025) → $3.73B (2032)**; the rental *search* demand potential is estimated at **₹7.53 lakh crore/year**; online rental startups have raised **$1.93B** cumulatively, but 2025 funding fell ~55% - the market rewards focus.
 - **The deposit pool is the prize: ₹1.26 lakh crore in six metros**, with 6–10 month norms in Bengaluru creating acute cash-flow pain.
 - Rent control-era supply distortions (11.09M vacant units) and a 9.4M-unit affordable shortage mean policy pressure for rentals is structural, not cyclical.
 
 ### 7.2 Competitive positioning
 
 - **NoBroker** owns distribution and is chasing profitability; it could bundle deposit protection but has not. We are complement-compatible: evidence layer + guarantee, not another listing site.
-- **Eqaro** and **CirclePe/Crib** validate the guarantee/zero-deposit demand but are financing-first. They need an evidence layer to price and adjudicate — potential partners as much as competitors.
+- **Eqaro** and **CirclePe/Crib** validate the guarantee/zero-deposit demand but are financing-first. They need an evidence layer to price and adjudicate - potential partners as much as competitors.
 - **RentenPe/RentSevak** validate scores/passports but inherit the tenant-blacklist risk we are deliberately avoiding.
 - **Global players** prove the economics and the failure modes (Fronted: capital cost; Canopy: unit economics; NCLC: consumer backlash).
 - **Our differentiated position:** the neutral evidence and fairness layer. We are the Switzerland of the deposit dispute. This is defensible through data (benchmarks), law (state rulebase), and trust (tenant ownership), not through capital.
@@ -592,7 +592,7 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 
 1. **Landlord/property-manager SaaS** (primary): per-tenancy or per-unit per month (₹99–₹499), for evidence records, automated condition reports, faster deposit settlements, and dispute handling. Landlords with many units and operators pay; individual tenants do not.
 2. **Guarantee distribution fee** (secondary, later): when the tenant chooses a deposit guarantee/insurance product from a regulated partner, Makaan earns a distribution fee (and supplies the evidence/risk signals). We do not underwrite.
-3. **Human-reviewed audit / mediation** (later, premium): fixed fee for a reviewed, dossier-grade assessment — never a percentage of the disputed amount, to protect neutrality.
+3. **Human-reviewed audit / mediation** (later, premium): fixed fee for a reviewed, dossier-grade assessment - never a percentage of the disputed amount, to protect neutrality.
 
 **Explicitly rejected:** charging tenants for basic refund protection; percentage-of-dispute fees; selling tenant scores/blacklists; ads for listings.
 
@@ -605,11 +605,11 @@ Every route: JWT required; authorization derived from the tenancy (never trust b
 
 ### 7.6 Moat
 
-1. **Benchmark dataset** (city × item × price ranges, versioned, sourced) — compounds with every audit.
-2. **State-law rulebase** (what is protected wear, what notice/deduction rules apply) — operationally tedious, legally valuable.
-3. **Consented evidence graph** — the condition and settlement history of tenancies, tenant-owned.
-4. **Trust neutrality** — being the party neither side accuses of gaming.
-5. **Operator integrations** — switching costs once condition reports flow through Makaan.
+1. **Benchmark dataset** (city × item × price ranges, versioned, sourced) - compounds with every audit.
+2. **State-law rulebase** (what is protected wear, what notice/deduction rules apply) - operationally tedious, legally valuable.
+3. **Consented evidence graph** - the condition and settlement history of tenancies, tenant-owned.
+4. **Trust neutrality** - being the party neither side accuses of gaming.
+5. **Operator integrations** - switching costs once condition reports flow through Makaan.
 
 ### 7.7 Metrics
 
@@ -658,12 +658,12 @@ Delete every use of "binding audit", "legally binding certificate", or "statutor
 
 ### 8.5 Platform liability and reviews
 
-- If we host user-generated content/reviews, IT Act Section 79 + IT Rules 2021 give safe harbour if we comply: user agreement prohibiting defamation, grievance officer, action on court/government orders. Defamation sits under **BNS 2023 Section 356** (up to 2 years). The Kerala High Court (May 2026) reinforced that intermediaries cannot be forced to remove allegedly defamatory content without a judicial finding — but compliance mechanisms must exist.
+- If we host user-generated content/reviews, IT Act Section 79 + IT Rules 2021 give safe harbour if we comply: user agreement prohibiting defamation, grievance officer, action on court/government orders. Defamation sits under **BNS 2023 Section 356** (up to 2 years). The Kerala High Court (May 2026) reinforced that intermediaries cannot be forced to remove allegedly defamatory content without a judicial finding - but compliance mechanisms must exist.
 - v1 has no public reviews. When they come: verified-stay only, positive-primary, right of reply, clear moderation policy.
 
 ### 8.6 Insurance / surety (future guarantee product)
 
-- IRDAI surety-bond guidelines (Jan 2022) permit the structure; Eqaro and others already operate in this space. We are the **distributor/technology layer** with an insurer/surety partner — not the risk carrier.
+- IRDAI surety-bond guidelines (Jan 2022) permit the structure; Eqaro and others already operate in this space. We are the **distributor/technology layer** with an insurer/surety partner - not the risk carrier.
 - Consumer-protection design: fees refundable or waived when no claim occurs; clear disclosure of what the guarantee does and does not cover; no debt that survives a payout in ways the tenant cannot see.
 
 ---
@@ -704,7 +704,7 @@ See §4.5. Deliverable: public repo, deployed URL, 3-minute video, writeup. Succ
 - [ ] Benchmark dataset licensed/used in mediation; publish an annual "Deposit Fairness Report" (distribution + authority).
 - [ ] 25,000 tenancies and Series A readiness, or a profitable operator-led niche.
 
-**Gates:** if by day 90 fewer than 40% of pilot tenancies complete a move-out audit through Makaan, the capture loop is too heavy — redesign before spending on growth. If landlords do not renew, pricing/channel is wrong. If a guarantee partner cannot offer consumer-safe terms, do not ship one.
+**Gates:** if by day 90 fewer than 40% of pilot tenancies complete a move-out audit through Makaan, the capture loop is too heavy - redesign before spending on growth. If landlords do not renew, pricing/channel is wrong. If a guarantee partner cannot offer consumer-safe terms, do not ship one.
 
 ---
 
@@ -787,63 +787,63 @@ Do not register a company, buy insurance capacity, or sign office leases until t
 
 ### India deposit pain and market data
 
-1. NoBroker Rent Report 2026 (₹1.26 lakh crore locked; 35% full refunds in Bengaluru; deposit norms) — via Economic Times, Business Standard, Hindustan Times, July 2026.
-2. Hindustan Times — Bengaluru tenants ₹31,628 crore locked; only 35% get full refund.
-3. Business Standard — ₹1.26 trillion locked in security deposits; rent burden stats.
-4. Moneycontrol — Bengaluru landlord seeks ₹5 lakh security; deposit demands vs other cities.
-5. Hindustan Times — refund/deduction case series: ₹1,00,000 → ₹19,604; ₹51,000 cut; ₹48,000 deduction; "Has anyone actually got their full deposit back?".
-6. Business Today — "₹1 lakh deposit, ₹19,604 returned" (r/bangalorerentals).
-7. Hindustan Times — consumer court win vs Nestaway for hidden painting charges (judgment 14 Aug 2025).
-8. Hindustan Times — eviction without a registered agreement takes up to two years.
-9. CSEP — rent control and urban vacancy (12.3% overall); Knight Frank/Khaitan — 11.09M vacant urban homes, 21.72M rented households.
-10. Census 2011 / EPW — 27.55% of urban households rent; 100M+ urban renters implied.
-11. Reuters — India rents to rise 7–10% (Mar 2025); MoSPI CPI housing inflation (Jun 2026); ANAROCK yields.
-12. Times of India / India Today — tenant verification failures, police verification enforcement gaps; RentenPe ORA (₹499).
-13. Hindustan Times — Chennai landlord EMI distress; tenant default and overstay.
-14. r/bangalore, r/LegalAdviceIndia threads — deposit recovery despair; commercial overstay; eviction timelines.
-15. Hindustan Times / Indian Express — Catena Homes ₹50 crore lease scam (Sep 2025); Jones/JAM ₹100–200 crore (May 2026); listing/token scams.
-16. NCRB via The Hindu — 1,01,928 cybercrime cases in 2024 (+18%); 72.6% fraud; PIB/I4C — ₹55,050 crore reported losses 2021–25.
-17. Frontline (The Hindu), Article 14, The Revealer — rental discrimination evidence and legal status.
-18. PRS India / PIB — Model Tenancy Act 2021; adoption: TN, AP, UP, Assam; MTA sections 4, 11, 13, 15, 17, 21, 23.
+1. NoBroker Rent Report 2026 (₹1.26 lakh crore locked; 35% full refunds in Bengaluru; deposit norms) - via Economic Times, Business Standard, Hindustan Times, July 2026.
+2. Hindustan Times - Bengaluru tenants ₹31,628 crore locked; only 35% get full refund.
+3. Business Standard - ₹1.26 trillion locked in security deposits; rent burden stats.
+4. Moneycontrol - Bengaluru landlord seeks ₹5 lakh security; deposit demands vs other cities.
+5. Hindustan Times - refund/deduction case series: ₹1,00,000 → ₹19,604; ₹51,000 cut; ₹48,000 deduction; "Has anyone actually got their full deposit back?".
+6. Business Today - "₹1 lakh deposit, ₹19,604 returned" (r/bangalorerentals).
+7. Hindustan Times - consumer court win vs Nestaway for hidden painting charges (judgment 14 Aug 2025).
+8. Hindustan Times - eviction without a registered agreement takes up to two years.
+9. CSEP - rent control and urban vacancy (12.3% overall); Knight Frank/Khaitan - 11.09M vacant urban homes, 21.72M rented households.
+10. Census 2011 / EPW - 27.55% of urban households rent; 100M+ urban renters implied.
+11. Reuters - India rents to rise 7–10% (Mar 2025); MoSPI CPI housing inflation (Jun 2026); ANAROCK yields.
+12. Times of India / India Today - tenant verification failures, police verification enforcement gaps; RentenPe ORA (₹499).
+13. Hindustan Times - Chennai landlord EMI distress; tenant default and overstay.
+14. r/bangalore, r/LegalAdviceIndia threads - deposit recovery despair; commercial overstay; eviction timelines.
+15. Hindustan Times / Indian Express - Catena Homes ₹50 crore lease scam (Sep 2025); Jones/JAM ₹100–200 crore (May 2026); listing/token scams.
+16. NCRB via The Hindu - 1,01,928 cybercrime cases in 2024 (+18%); 72.6% fraud; PIB/I4C - ₹55,050 crore reported losses 2021–25.
+17. Frontline (The Hindu), Article 14, The Revealer - rental discrimination evidence and legal status.
+18. PRS India / PIB - Model Tenancy Act 2021; adoption: TN, AP, UP, Assam; MTA sections 4, 11, 13, 15, 17, 21, 23.
 19. Tamil Nadu Rent Authority portal (`tenancy.tn.gov.in`); UP portal (`upawas.up.gov.in`); Maharashtra Leave & Licence registration; Karnataka Kaveri.
-20. Times of India / India Today — repair responsibilities, notice and rent-increase rules.
+20. Times of India / India Today - repair responsibilities, notice and rent-increase rules.
 
 ### Global comparables
 
-21. PR Newswire — Rhino + Jetty merger (Feb 2025), 6M units.
+21. PR Newswire - Rhino + Jetty merger (Feb 2025), 6M units.
 22. Obligo × AppFolio deposit alternatives (Jul 2025); TheGuarantors × Warburg Pincus (Mar 2026).
-23. TechCrunch — Rhino model; Business Insider — Jetty surety model.
-24. Tech.eu — Fronted closure (Aug 2023); Insurance Post — Canopy into administration (Feb 2026).
-25. Cohen Milstein — SafeRent settlement ($2.275M, score restrictions, Nov 2024); BetaKit — Certn privacy investigation.
-26. NCLC (2026) — "Tenant Insecurity": critique of deposit-alternative fees.
+23. TechCrunch - Rhino model; Business Insider - Jetty surety model.
+24. Tech.eu - Fronted closure (Aug 2023); Insurance Post - Canopy into administration (Feb 2026).
+25. Cohen Milstein - SafeRent settlement ($2.275M, score restrictions, Nov 2024); BetaKit - Certn privacy investigation.
+26. NCLC (2026) - "Tenant Insecurity": critique of deposit-alternative fees.
 27. Esusu $50M Series C at $1.2B (Dec 2025); flatfair × Heimstaden (May 2025); Reposit, Zero Deposit, CreditLadder.
-28. FTC — US rental scam losses ($65M reported since 2020) as a directional analogue.
+28. FTC - US rental scam losses ($65M reported since 2020) as a directional analogue.
 
 ### India regulation
 
-29. RBI — Master Direction on Payment Aggregators (Sep 2025); credit-card rent payment halt; PA licensing and settlement rules.
-30. MeitY/PIB — DPDP Rules 2025 notified 13 Nov 2025; phasing (Consent Manager ~Nov 2026; core obligations ~May 2027); penalties.
-31. UIDAI — Aadhaar Paperless Offline eKYC; AUA/KUA onboarding; DigiLocker.
+29. RBI - Master Direction on Payment Aggregators (Sep 2025); credit-card rent payment halt; PA licensing and settlement rules.
+30. MeitY/PIB - DPDP Rules 2025 notified 13 Nov 2025; phasing (Consent Manager ~Nov 2026; core obligations ~May 2027); penalties.
+31. UIDAI - Aadhaar Paperless Offline eKYC; AUA/KUA onboarding; DigiLocker.
 32. IT Rules 2021 (updated Feb 2026); Kerala High Court, *Anto Augustine v. Union of India* (May 2026); BNS 2023 §356.
-33. IRDAI — Surety Insurance Contracts Guidelines (Jan 2022).
-34. India Code / state acts — Registration Act §17; stamp duty tables; e-sign under IT Act §10A.
+33. IRDAI - Surety Insurance Contracts Guidelines (Jan 2022).
+34. India Code / state acts - Registration Act §17; stamp duty tables; e-sign under IT Act §10A.
 
 ### Competition and market landscape
 
 35. NoBroker FY26 revenue and profitability targets; NoBroker Pay.
 36. RentenPe (R Score, ORA, Rent Protect); RentSevak Passport.
 37. Eqaro Guarantees (RentSafe); ZeroDeposit.in; Flent Secured; Qushah; RentPilot escrow; Propico; Housr zero-deposit launch; CirclePe acquired by Crib (Jul 2026); FF21 zero-deposit (95% opt-in).
-38. Tracxn — online rental startups: 1,024 companies, $1.93B raised, 2025 funding down ~55%; real estate tech $218M in 2025.
-39. Ken Research — formal rental housing $2.8B (2025) → $3.73B (2032); Magicbricks — ₹7.53 lakh crore rental demand potential.
+38. Tracxn - online rental startups: 1,024 companies, $1.93B raised, 2025 funding down ~55%; real estate tech $218M in 2025.
+39. Ken Research - formal rental housing $2.8B (2025) → $3.73B (2032); Magicbricks - ₹7.53 lakh crore rental demand potential.
 
 ### Hackathon
 
-40. WeMakeDevs — First Commit overview (`wemakedevs.org/aws/first-commit`), rules (`/rules`), schedule (`/schedule`), submit (`/submit`), fetched 2026-09-19.
-41. Luma — First Commit IRL event page (deadline: Sunday 8 PM IST).
-42. AWS — Free Tier 2026 update; Lambda/API Gateway/DynamoDB/S3/Cognito/Amplify/EventBridge/SNS/Bedrock pricing pages.
-43. AWS docs — SMS sandbox, India DLT sender routes (ap-south-1/ap-south-2), SMS pricing (local $0.004 vs international $0.071).
-44. AWS re:Post — Bedrock "ValidationException: Operation not allowed" on new accounts during a hackathon.
-45. AWS — Nova Lite model card (multimodal, ap-south-1) and Bedrock pricing ($0.06/$0.24 per 1M tokens, secondary verification).
+40. WeMakeDevs - First Commit overview (`wemakedevs.org/aws/first-commit`), rules (`/rules`), schedule (`/schedule`), submit (`/submit`), fetched 2026-09-19.
+41. Luma - First Commit IRL event page (deadline: Sunday 8 PM IST).
+42. AWS - Free Tier 2026 update; Lambda/API Gateway/DynamoDB/S3/Cognito/Amplify/EventBridge/SNS/Bedrock pricing pages.
+43. AWS docs - SMS sandbox, India DLT sender routes (ap-south-1/ap-south-2), SMS pricing (local $0.004 vs international $0.071).
+44. AWS re:Post - Bedrock "ValidationException: Operation not allowed" on new accounts during a hackathon.
+45. AWS - Nova Lite model card (multimodal, ap-south-1) and Bedrock pricing ($0.06/$0.24 per 1M tokens, secondary verification).
 
 *Note: source URLs for each item were collected during research on 2026-09-19; where numbers conflict across outlets, the plan uses ranges and attributes the primary report. Re-verify any figure before using it in an external deck.*
 
