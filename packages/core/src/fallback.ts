@@ -1,4 +1,5 @@
 import { BENCHMARKS, getBenchmark, type BenchmarkKey } from './benchmarks';
+import { statutoryNoteForState } from './state-rules';
 import {
   normalizeFinding,
   reviewRequired,
@@ -91,31 +92,31 @@ function uncertainDraft(area: string, statutoryNote: string): FindingDraft {
 }
 
 export interface DeterministicEngineOptions {
-  statutoryNote: string;
-  benchmarkVersion: string;
+  benchmarkVersion?: string;
 }
 
-export function createDeterministicEngine(options: DeterministicEngineOptions): AuditEngine {
+export function createDeterministicEngine(_options: DeterministicEngineOptions = {}): AuditEngine {
   return {
     name: 'deterministic',
     async analyze(input: AuditInput): Promise<AuditResult> {
       const started = Date.now();
+      const statutoryNote = statutoryNoteForState(input.stateCode);
       const findings: FindingDraft[] = [];
 
       for (const areaInput of input.areas) {
         const text = [areaInput.area, areaInput.categoryHint ?? ''].join(' ');
         const keys = matchBenchmarkKeys(text);
         if (keys.length === 0) {
-          findings.push(uncertainDraft(areaInput.area, options.statutoryNote));
+          findings.push(uncertainDraft(areaInput.area, statutoryNote));
           continue;
         }
         for (const key of keys) {
-          findings.push(draftForArea(areaInput.area, key, input.city, options.statutoryNote));
+          findings.push(draftForArea(areaInput.area, key, input.city, statutoryNote));
         }
       }
 
       if (findings.length === 0) {
-        findings.push(uncertainDraft('Unspecified area', options.statutoryNote));
+        findings.push(uncertainDraft('Unspecified area', statutoryNote));
       }
 
       return {

@@ -1,12 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { createDeterministicEngine, matchBenchmarkKeys } from '../src/fallback';
 import { reviewRequired } from '../src/audit';
-import { statutoryNoteForState } from '../src/state-rules';
 
-const engine = createDeterministicEngine({
-  statutoryNote: statutoryNoteForState('KA'),
-  benchmarkVersion: 'test',
-});
+const engine = createDeterministicEngine({ benchmarkVersion: 'test' });
 
 function first<T>(items: T[]): T {
   const value = items[0];
