@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 17% 95%;
+    --foreground: 270 6% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 6% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 6% 10%;
+    --primary: 10 65% 48%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 270 6% 14%;
+    --muted: 40 16% 90%;
+    --muted-foreground: 25 6% 38%;
+    --accent: 40 22% 90%;
+    --accent-foreground: 270 6% 14%;
+    --destructive: 0 70% 44%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 38 16% 85%;
+    --input: 38 16% 84%;
+    --ring: 10 65% 48%;
+    --radius: 0.6rem;
+    --sage: 85 15% 40%;
+    --sage-foreground: 85 30% 96%;
+    --ink: 270 6% 10%;
+    --paper: 40 17% 95%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Inter, system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: Fraunces, Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .surface {
+    @apply rounded-[var(--radius)] border border-border bg-card;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+  }
+  .surface {
+    border-color: #d4d0c8;
+    box-shadow: none;
+  }
+}
