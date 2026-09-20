@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Makaan: proof, fairness and protection for rental deposits in India.",
   "license": "MIT",
-  "packageManager": "pnpm@11.20.0",
+  "packageManager": "pnpm@11.27.0",
   "engines": {
     "node": ">=20"
   },
