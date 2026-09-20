@@ -1,0 +1,4 @@
+# Dependencies for the TestSprite generated test scripts.
+# The API scripts use requests. The frontend scripts use Playwright.
+requests>=2.32
+playwright>=1.48

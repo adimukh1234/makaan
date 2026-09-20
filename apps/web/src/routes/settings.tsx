@@ -114,7 +114,10 @@ export function Settings({ user }: { user: SessionUser }) {
         <CardContent>
           <Button
             variant="outline"
-            onClick={() => window.open(api.exportUrl(), '_blank', 'noopener')}
+            onClick={() => {
+              window.open(api.exportUrl(), '_blank', 'noopener');
+              toast.success('Export started. Check your downloads.');
+            }}
           >
             <Download className="h-4 w-4" aria-hidden="true" /> Export my data
           </Button>
