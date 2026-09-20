@@ -1,0 +1,3 @@
+# Keep generated and report HTML out of the language graph.
+*.html linguist-documentation
+testsprite_tests/*.html linguist-generated
