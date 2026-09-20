@@ -25,7 +25,7 @@ export function AppShell({ user }: { user: SessionUser }) {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur no-print">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
           <div className="flex items-center gap-6">
             <NavLink to="/app" aria-label="Makaan home">
@@ -97,7 +97,7 @@ export function AppShell({ user }: { user: SessionUser }) {
         <Outlet />
       </main>
 
-      <footer className="mx-auto max-w-6xl px-4 pb-10 pt-4 text-xs text-muted-foreground sm:px-6">
+      <footer className="mx-auto max-w-6xl px-4 pb-10 pt-4 text-xs text-muted-foreground sm:px-6 no-print">
         <p className="flex items-start gap-2">
           <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
           Makaan is not a court, an arbitrator, or the Rent Authority. Assessments are advisory.

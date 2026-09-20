@@ -1,5 +1,5 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, sep } from 'node:path';
 import type { EvidenceStore, StoredObject } from './types';
 
 export class LocalEvidenceStore implements EvidenceStore {
@@ -11,7 +11,7 @@ export class LocalEvidenceStore implements EvidenceStore {
 
   private pathFor(key: string): string {
     const full = resolve(this.root, key);
-    if (full !== this.root && !full.startsWith(this.root + '/')) {
+    if (full !== this.root && !full.startsWith(this.root + sep)) {
       throw new Error('Invalid storage key');
     }
     return full;

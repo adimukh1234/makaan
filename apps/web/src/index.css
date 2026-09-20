@@ -86,10 +86,21 @@
     display: none !important;
   }
   body {
-    background: #ffffff;
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  .surface {
-    border-color: #d4d0c8;
-    box-shadow: none;
+  .surface, [class*="rounded-"] {
+    box-shadow: none !important;
+  }
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  @page {
+    margin: 1.2cm;
+    size: A4 portrait;
   }
 }
