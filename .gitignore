@@ -16,3 +16,6 @@ pnpm-debug.log*
 !.vscode/extensions.json
 testsprite_tests/tmp/
 testsprite_tests/tmp/config.json
+__pycache__/
+*.pyc
+.pytest_cache/
