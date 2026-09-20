@@ -1,0 +1,1116 @@
+[
+  {
+    "id": "TC001",
+    "title": "Register a new user account",
+    "description": "This test verifies that a new user can register successfully and receive session information and a CSRF token.",
+    "category": "Authentication API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Select a role appropriate for the account"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the signed-in user account is created"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a CSRF token is issued"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Tenant accepts an invitation and sees the tenancy",
+    "description": "This verifies that an invited tenant can accept a tenancy invitation and then see the tenancy in their list.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy invitation page"
+      },
+      {
+        "type": "action",
+        "description": "Accept the tenancy invitation"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the accepted tenancy is displayed in the tenancy list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Start a session by logging in",
+    "description": "This test verifies that an existing user can log in and receive session information and a CSRF token.",
+    "category": "Authentication API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is signed in"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a CSRF token is issued"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Log out of an active session",
+    "description": "This test verifies that a signed-in user can log out and end the active session.",
+    "category": "Authentication API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the account menu"
+      },
+      {
+        "type": "action",
+        "description": "Log out of the session"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is signed out"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the session is cleared"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Landlord creates a tenancy invitation",
+    "description": "This verifies that a landlord can create a tenancy invitation for a property and see the new tenancy recorded.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy management page"
+      },
+      {
+        "type": "action",
+        "description": "Create a property with valid landlord details if needed"
+      },
+      {
+        "type": "action",
+        "description": "Create a tenancy invitation with valid tenant and date details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new tenancy is displayed in the tenancy list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Member records move-in and move-out inspections",
+    "description": "This verifies that a tenancy member can create inspection records for the tenancy and see them listed on the tenancy details page.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Create a move-in inspection with valid area and notes"
+      },
+      {
+        "type": "action",
+        "description": "Create a move-out inspection with valid area and notes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify both inspection records are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Landlord creates a property",
+    "description": "This verifies that a landlord can create a new rental property and see it added to their property list.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "action",
+        "description": "Create a new property with valid landlord details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the created property is displayed in the property list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Member triggers an audit after inspections exist",
+    "description": "This verifies that a tenancy member can trigger the AI audit after inspections have been recorded and see the audit result.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Create the required inspection records"
+      },
+      {
+        "type": "action",
+        "description": "Trigger the audit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an audit result is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Member resolves an open dispute",
+    "description": "This verifies that a tenancy member can resolve an existing dispute and see the resolved outcome in the tenancy record.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the dispute details page"
+      },
+      {
+        "type": "action",
+        "description": "Resolve the dispute with a valid amount and notes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dispute is shown as resolved"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Landlord files a claim and tenant opens a dispute",
+    "description": "This verifies that a landlord can submit a claim and a tenant can open a dispute for the same tenancy.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Submit a claim with valid amount and rationale"
+      },
+      {
+        "type": "action",
+        "description": "Open the dispute form"
+      },
+      {
+        "type": "action",
+        "description": "Submit a dispute with a valid reason"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the claim and dispute are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Tenant views tenancy details",
+    "description": "This verifies that a tenancy member can open a tenancy and see the full tenancy details including the related property and inspections.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy list"
+      },
+      {
+        "type": "action",
+        "description": "Open a tenancy from the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify tenancy details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify related property and inspection information are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Member views the deposit statement",
+    "description": "This verifies that a tenancy member can open the deposit statement view and see the calculated deposit statement.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Open the deposit statement view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the deposit statement is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Landlord updates a property",
+    "description": "This verifies that a landlord can update an existing property and see the updated details reflected in the property view.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "action",
+        "description": "Create a new property with valid landlord details"
+      },
+      {
+        "type": "action",
+        "description": "Open the created property's details"
+      },
+      {
+        "type": "action",
+        "description": "Update the property with valid changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated property details are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Export personal data",
+    "description": "This test verifies that a signed-in user can export their personal data successfully.",
+    "category": "User Account and Consent API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the personal data export page"
+      },
+      {
+        "type": "action",
+        "description": "Request a personal data export"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the personal data export is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify export data is available for review"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Landlord closes an active tenancy",
+    "description": "This verifies that a landlord can close an active tenancy and see it reflected as closed in the tenancy details.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Close the active tenancy"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the tenancy is shown as closed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Landlord deletes an unused property",
+    "description": "This verifies that a landlord can delete a property that has no active tenancies and no longer see it in the list.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "action",
+        "description": "Create a new property with valid landlord details"
+      },
+      {
+        "type": "action",
+        "description": "Delete the created property"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the property is no longer displayed in the property list"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Update a consent preference",
+    "description": "This test verifies that a signed-in user can change a consent setting and see the updated preference reflected in the UI.",
+    "category": "User Account and Consent API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the consent settings page"
+      },
+      {
+        "type": "action",
+        "description": "Change one consent preference"
+      },
+      {
+        "type": "action",
+        "description": "Save the consent changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the consent preference update is reflected"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an updated consent confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "System operator checks service health",
+    "description": "This verifies that a system operator can view the health endpoint and confirm the service and subsystem status information is available.",
+    "category": "Health Endpoint Verification",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the health status page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the overall service health status is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify subsystem status information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Review current consent preferences",
+    "description": "This test verifies that a signed-in user can view their current consent preferences.",
+    "category": "User Account and Consent API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the consent settings page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify current consent preferences are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify active consent records are visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "User views accessible properties",
+    "description": "This verifies that an authenticated user can open the properties list and see the properties available to their account.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify accessible properties are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Authenticated user exports personal data",
+    "description": "This verifies that an authenticated user can request a personal data export and see the export confirmation or download state.",
+    "category": "Personal Data Export",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the personal data export page"
+      },
+      {
+        "type": "action",
+        "description": "Request a personal data export"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a personal data export confirmation is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Non-invited user cannot accept a tenancy",
+    "description": "This verifies that a user who was not invited to a tenancy cannot accept it and sees an access or validation error.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy invitation page"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to accept a tenancy invitation that is not assigned to the current user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an access or validation error is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Check service health status",
+    "description": "This test verifies that the health endpoint returns a healthy status payload with the expected subsystem fields.",
+    "category": "Health API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/health"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the service health payload is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the AI, evidence, and time subsystem statuses are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Authenticated user updates consent preferences",
+    "description": "This verifies that an authenticated user can review and update their consent preferences and see the updated settings saved.",
+    "category": "Consent Preference Updates",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the consent preferences page"
+      },
+      {
+        "type": "action",
+        "description": "Update the consent preferences"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated consent preferences are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Prevent duplicate account registration",
+    "description": "This test verifies that registering with an email that already exists is rejected with an inline error state.",
+    "category": "Authentication API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Select a role appropriate for the account"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form again with the same details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a registration conflict error is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Tenant cannot create a property",
+    "description": "This verifies that a tenant is blocked from creating a property and sees a permission-related error state.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to create a property with valid details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a permission error is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Reject invalid sign-in credentials",
+    "description": "This test verifies that invalid login credentials are rejected and the user remains signed out.",
+    "category": "Authentication API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with an invalid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a login error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is not signed in"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Detect degraded subsystem status",
+    "description": "This test verifies that the health endpoint reports subsystem status information when one or more subsystems are degraded.",
+    "category": "Health API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/health"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the service health payload is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify subsystem status information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC029",
+    "title": "Audit is blocked until inspections exist",
+    "description": "This verifies that attempting to trigger an audit before inspections are recorded shows a clear validation state.",
+    "category": "Tenancy and Dispute Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the tenancy details page"
+      },
+      {
+        "type": "action",
+        "description": "Trigger the audit without creating inspections"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an audit blocked message is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC030",
+    "title": "User sees property not found for inaccessible property",
+    "description": "This verifies that an inaccessible or missing property shows a not found state instead of property details.",
+    "category": "Property Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the property management page"
+      },
+      {
+        "type": "action",
+        "description": "Open an inaccessible or missing property"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not found message is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

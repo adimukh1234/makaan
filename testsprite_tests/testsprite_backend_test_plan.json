@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "get apihealth returns service status",
+    "description": "Verify that GET /api/health returns a 200 response with fields ok, service, ai, evidence, and time indicating the current health and status of the service."
+  },
+  {
+    "id": "TC002",
+    "title": "post apiauthregister creates new user with consent",
+    "description": "Test POST /api/auth/register with valid email, password, name, role, and consent payload creates a new user, returns 201 with user object and csrfToken."
+  },
+  {
+    "id": "TC003",
+    "title": "post apiauthlogin authenticates user and returns csrf token",
+    "description": "Test POST /api/auth/login with valid email and password returns 200 with user object and csrfToken."
+  },
+  {
+    "id": "TC004",
+    "title": "post apiauthlogout logs out active session",
+    "description": "Test POST /api/auth/logout with valid session cookie and matching CSRF token returns 200 with ok true indicating successful logout."
+  },
+  {
+    "id": "TC005",
+    "title": "get apiauthsession returns current user session and csrf token",
+    "description": "Verify GET /api/auth/session returns 200 with current authenticated user object and csrfToken."
+  },
+  {
+    "id": "TC006",
+    "title": "get apimeconsents returns active user consents",
+    "description": "Test GET /api/me/consents with valid authenticated session returns 200 with array of active consent records."
+  },
+  {
+    "id": "TC007",
+    "title": "post apimeconsents updates user consent status",
+    "description": "Test POST /api/me/consents with valid session and purpose/granted payload updates consent and returns 200 with updated consent object."
+  },
+  {
+    "id": "TC008",
+    "title": "get apimeexport returns complete user data export",
+    "description": "Verify GET /api/me/export with valid session returns 200 with user's complete data export in JSON format."
+  },
+  {
+    "id": "TC009",
+    "title": "get apiproperties lists properties for user",
+    "description": "Test GET /api/properties with valid session returns 200 with array of properties accessible to current landlord or tenant."
+  },
+  {
+    "id": "TC010",
+    "title": "post apiproperties creates new property for landlord",
+    "description": "Test POST /api/properties with valid landlord property details creates a new property and returns 201 with property object and optional warning."
+  }
+]
