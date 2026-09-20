@@ -11,9 +11,7 @@ export function requireUser(request: FastifyRequest): SessionUser {
 }
 
 export const idParamSchema = {
-  safeParse(
-    value: unknown,
-  ):
+  safeParse(value: unknown):
     | { success: true; data: { id: string } }
     | {
         success: false;

@@ -79,14 +79,18 @@ export async function request(
   if (client.cookie) headers.cookie = client.cookie;
   if (client.csrf && options.method !== 'GET') headers['x-csrf-token'] = client.csrf;
 
-  const response = await ctx.app.inject({
+  const response = (await ctx.app.inject({
     method: options.method,
     url: options.url,
     headers,
-    payload: options.rawPayload ?? options.payload,
-  });
+    payload: (options.rawPayload ?? options.payload) as string | object | Buffer | undefined,
+  })) as unknown as {
+    statusCode: number;
+    body: string;
+    headers: Record<string, string | string[] | undefined>;
+  };
 
-  const setCookie = readSetCookie(response.headers['set-cookie'] as string | string[] | undefined);
+  const setCookie = readSetCookie(response.headers['set-cookie']);
   if (setCookie) client.cookie = setCookie;
 
   let body: any = null;

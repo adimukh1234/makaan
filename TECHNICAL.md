@@ -94,28 +94,28 @@ These are traps of cost, law, or time. They are intentionally excluded from v1:
 
 The first prototype (`tenant-market-trust`) was audited and found to be a polished simulation. This plan is also a correction list. Each item below is a defect from that audit mapped to the decision that closes it.
 
-| # | Flaw in the prototype | Fix in this plan |
-|---|---|---|
-| 1 | No API server. `src/api/app.ts` returned an object; `src/server.ts` logged a line and exported objects. No routes, no handler. | A real Fastify HTTP server with typed routes, middleware, and integration tests through the HTTP layer. Section 9. |
-| 2 | No persistence. Only an `InMemoryDataStore`. AWS SDK dependencies were never imported. | A real `node:sqlite` store with schema and migrations locally, plus a mirror DynamoDB design for AWS. Section 8. |
-| 3 | The forensic "AI" never opened an image. It branched on `roomArea.includes('bath')`. | A real Bedrock Nova Lite vision call with a strict JSON contract, plus a deterministic fallback behind the same interface. Section 11. |
-| 4 | The frontend was fully mocked and never called the backend. Score showed `82/100` while the backend used 300 to 850. | The frontend consumes the API through TanStack Query and a typed client. One scale, one source of truth. Sections 9 and 14. |
-| 5 | Deployment was broken. `Handler: dist/server.handler` did not exist, the build emitted `dist/src/server.js`, and the template lacked most resources. | A deployment plan that matches the code, with a real SAM template and an Amplify build, verified resource by resource. Section 17. |
-| 6 | Tests certified code that did not exist. Frontend tests defined their own helper functions and imported nothing from the app. | Tests import the real code. Frontend tests render real components. The API is tested through `fastify.inject`. Section 15. |
-| 7 | OTP was returned in the API response. Tokens were unsigned strings with no expiry. | Password auth with scrypt, server-side sessions with httpOnly cookies, expiry, revocation, and CSRF protection. Section 10. |
-| 8 | No authorization layer. Services trusted `tenantId` and `landlordId` from the request body. | Every route derives identity from the session. Ownership is checked against the tenancy or property. Body-supplied ownership IDs are rejected. Section 9 and 10. |
-| 9 | No tenancy entity. Payments and disputes could reference any property. | A first-class `tenancies` table is the authorization boundary and the lifecycle anchor. Section 6. |
-| 10 | Money was a JavaScript float. | All money is an integer number of paise. Formatting happens at the edge only. Section 7. |
-| 11 | Reputation algorithm punished tenants for filing disputes and saturated at 850. | Reputation is removed from v1 entirely. It returns only as a consent-based, positive-primary rental passport, never as a blacklist. Section 20. |
-| 12 | "Binding audit" language and wrong legal citations (Section 21 is eviction, not notice). | Advisory vocabulary enforced everywhere. MTA sections cited correctly. Section 20. |
-| 13 | Forensic math refunded the full deposit per room inspection and ignored arrears. | One statement per tenancy aggregates all findings, floors at zero, and separates approved deductions from the deposit held. Section 6. |
-| 14 | Uploads were fake presigned strings and S3 CORS allowed all origins. | Real uploads with content-type and size validation, authenticated retrieval, hashed storage, and scoped bucket policy. Sections 10 and 13. |
-| 15 | In-memory store leaked live object references and had no conditional writes. | The SQL store returns plain rows through mappers. Writes are explicit. Section 8. |
-| 16 | No input validation, no rate limits, no security headers. | Zod on every route, rate limiting, Helmet, strict CORS, and payload limits. Sections 9 and 10. |
-| 17 | Build artifacts and test output were committed. | `.gitignore` covers build output, coverage, uploads, and env files. Section 5. |
-| 18 | README overclaimed features and test counts. | The README describes only what the repository actually does, with badges and real numbers. |
-| 19 | Frontend had no responsive behavior despite claiming it. | Mobile-first layout verified at 375px, 768px, and 1280px. Section 14. |
-| 20 | No accessibility. Modals had no focus management, icon buttons had no labels, status was color-only. | Accessible primitives from shadcn and Radix, labelled controls, visible focus, keyboard flows, and non-color status text. Section 14. |
+| #   | Flaw in the prototype                                                                                                                                | Fix in this plan                                                                                                                                                 |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | No API server. `src/api/app.ts` returned an object; `src/server.ts` logged a line and exported objects. No routes, no handler.                       | A real Fastify HTTP server with typed routes, middleware, and integration tests through the HTTP layer. Section 9.                                               |
+| 2   | No persistence. Only an `InMemoryDataStore`. AWS SDK dependencies were never imported.                                                               | A real `node:sqlite` store with schema and migrations locally, plus a mirror DynamoDB design for AWS. Section 8.                                                 |
+| 3   | The forensic "AI" never opened an image. It branched on `roomArea.includes('bath')`.                                                                 | A real Bedrock Nova Lite vision call with a strict JSON contract, plus a deterministic fallback behind the same interface. Section 11.                           |
+| 4   | The frontend was fully mocked and never called the backend. Score showed `82/100` while the backend used 300 to 850.                                 | The frontend consumes the API through TanStack Query and a typed client. One scale, one source of truth. Sections 9 and 14.                                      |
+| 5   | Deployment was broken. `Handler: dist/server.handler` did not exist, the build emitted `dist/src/server.js`, and the template lacked most resources. | A deployment plan that matches the code, with a real SAM template and an Amplify build, verified resource by resource. Section 17.                               |
+| 6   | Tests certified code that did not exist. Frontend tests defined their own helper functions and imported nothing from the app.                        | Tests import the real code. Frontend tests render real components. The API is tested through `fastify.inject`. Section 15.                                       |
+| 7   | OTP was returned in the API response. Tokens were unsigned strings with no expiry.                                                                   | Password auth with scrypt, server-side sessions with httpOnly cookies, expiry, revocation, and CSRF protection. Section 10.                                      |
+| 8   | No authorization layer. Services trusted `tenantId` and `landlordId` from the request body.                                                          | Every route derives identity from the session. Ownership is checked against the tenancy or property. Body-supplied ownership IDs are rejected. Section 9 and 10. |
+| 9   | No tenancy entity. Payments and disputes could reference any property.                                                                               | A first-class `tenancies` table is the authorization boundary and the lifecycle anchor. Section 6.                                                               |
+| 10  | Money was a JavaScript float.                                                                                                                        | All money is an integer number of paise. Formatting happens at the edge only. Section 7.                                                                         |
+| 11  | Reputation algorithm punished tenants for filing disputes and saturated at 850.                                                                      | Reputation is removed from v1 entirely. It returns only as a consent-based, positive-primary rental passport, never as a blacklist. Section 20.                  |
+| 12  | "Binding audit" language and wrong legal citations (Section 21 is eviction, not notice).                                                             | Advisory vocabulary enforced everywhere. MTA sections cited correctly. Section 20.                                                                               |
+| 13  | Forensic math refunded the full deposit per room inspection and ignored arrears.                                                                     | One statement per tenancy aggregates all findings, floors at zero, and separates approved deductions from the deposit held. Section 6.                           |
+| 14  | Uploads were fake presigned strings and S3 CORS allowed all origins.                                                                                 | Real uploads with content-type and size validation, authenticated retrieval, hashed storage, and scoped bucket policy. Sections 10 and 13.                       |
+| 15  | In-memory store leaked live object references and had no conditional writes.                                                                         | The SQL store returns plain rows through mappers. Writes are explicit. Section 8.                                                                                |
+| 16  | No input validation, no rate limits, no security headers.                                                                                            | Zod on every route, rate limiting, Helmet, strict CORS, and payload limits. Sections 9 and 10.                                                                   |
+| 17  | Build artifacts and test output were committed.                                                                                                      | `.gitignore` covers build output, coverage, uploads, and env files. Section 5.                                                                                   |
+| 18  | README overclaimed features and test counts.                                                                                                         | The README describes only what the repository actually does, with badges and real numbers.                                                                       |
+| 19  | Frontend had no responsive behavior despite claiming it.                                                                                             | Mobile-first layout verified at 375px, 768px, and 1280px. Section 14.                                                                                            |
+| 20  | No accessibility. Modals had no focus management, icon buttons had no labels, status was color-only.                                                 | Accessible primitives from shadcn and Radix, labelled controls, visible focus, keyboard flows, and non-color status text. Section 14.                            |
 
 ---
 
@@ -173,30 +173,30 @@ POST /api/tenancies/:id/disputes              challenge a finding or the stateme
 
 Every decision is chosen for reliability, testability, and the $10 budget. Where a choice is close, the tie-breaker is "can one engineer run and debug it locally at 2 AM".
 
-| Layer | Choice | Version | Rejected alternatives | Reason |
-|---|---|---|---|---|
-| Language | TypeScript, strict | 5.6 | Python, Go | One language across domain, API and web; shared types; the domain math is where correctness matters |
-| Package manager | pnpm workspaces | 11 | npm, yarn, bun | Fast, strict, disk-efficient, first-class workspaces; bun is not installed and adds risk |
-| Runtime | Node.js | 26 (local), 20 (Lambda) | Deno, Bun | Present in the environment; Lambda supports Node 20 |
-| API framework | Fastify | 4 | Express, Hono, NestJS | Fast, typed, schema-first, excellent test injection; minimal surface |
-| Validation | Zod | 3 | Joi, Yup, io-ts | One schema shared by validation, types and tests |
-| Local database | `node:sqlite` | built into Node 26 | better-sqlite3, Postgres, Prisma | Zero native build risk on Node 26; synchronous and fast; no external service |
-| AWS database | DynamoDB single table | on-demand | RDS, Postgres | Scales to zero, pay per request, matches access patterns, free tier safe |
-| Sessions | Server-side sessions in SQLite, httpOnly cookie | custom | JWT in localStorage | Revocable, no token leakage, no XSS token theft |
-| Password hashing | `node:crypto` scrypt | built-in | bcrypt, argon2 | No native dependency; scrypt is memory-hard and recommended |
-| File storage local | Filesystem under `var/evidence` | custom | S3 only | Works offline; identical interface to the S3 adapter |
-| File storage AWS | Amazon S3 with presigned PUT | SDK v3 | Through Lambda | Photos never traverse Lambda; cheaper and faster |
-| AI | Amazon Bedrock Nova Lite `amazon.nova-lite-v1:0` | SDK v3 | Claude, OpenAI, local GGUF | Multimodal, cheap ($0.06 input / $0.24 output per 1M tokens), ap-south-1 availability |
-| AI fallback | Deterministic rule engine | first-party | none | The demo and the product must survive a Bedrock outage |
-| Frontend | React + Vite | 18 + 5 | Next.js, Remix | Matches the plan; simplest static deploy; no SSR needed for an authenticated app |
-| UI system | Tailwind CSS + shadcn/ui (Radix primitives) | 3.4 + latest | MUI, Chakra, Ant | Own the code, accessible primitives, no runtime CSS-in-JS |
-| Client data | TanStack Query | 5 | Redux, Zustand, SWR | Server state caching and invalidation without a global store |
-| Forms | react-hook-form + zod resolver | 7 + 3 | Formik | Shared schema between client and server |
-| Routing | React Router | 6 | file-based routing | Explicit, testable |
-| Tests | Vitest + Testing Library + fastify.inject | 2 | Jest, Playwright only | Fast, ESM-native, one runner for all layers |
-| Lint and format | ESLint + Prettier | 9 + 3 | Biome | Standard, well supported |
-| IaC | AWS SAM | latest | CDK, Terraform | Smallest surface for Lambda plus API plus DynamoDB plus S3; esbuild bundling |
-| Hosting | AWS Amplify Hosting | managed | S3 and CloudFront hand-rolled | Git deploys and a free tier for the judged period |
+| Layer              | Choice                                           | Version                 | Rejected alternatives            | Reason                                                                                              |
+| ------------------ | ------------------------------------------------ | ----------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Language           | TypeScript, strict                               | 5.6                     | Python, Go                       | One language across domain, API and web; shared types; the domain math is where correctness matters |
+| Package manager    | pnpm workspaces                                  | 11                      | npm, yarn, bun                   | Fast, strict, disk-efficient, first-class workspaces; bun is not installed and adds risk            |
+| Runtime            | Node.js                                          | 26 (local), 20 (Lambda) | Deno, Bun                        | Present in the environment; Lambda supports Node 20                                                 |
+| API framework      | Fastify                                          | 4                       | Express, Hono, NestJS            | Fast, typed, schema-first, excellent test injection; minimal surface                                |
+| Validation         | Zod                                              | 3                       | Joi, Yup, io-ts                  | One schema shared by validation, types and tests                                                    |
+| Local database     | `node:sqlite`                                    | built into Node 26      | better-sqlite3, Postgres, Prisma | Zero native build risk on Node 26; synchronous and fast; no external service                        |
+| AWS database       | DynamoDB single table                            | on-demand               | RDS, Postgres                    | Scales to zero, pay per request, matches access patterns, free tier safe                            |
+| Sessions           | Server-side sessions in SQLite, httpOnly cookie  | custom                  | JWT in localStorage              | Revocable, no token leakage, no XSS token theft                                                     |
+| Password hashing   | `node:crypto` scrypt                             | built-in                | bcrypt, argon2                   | No native dependency; scrypt is memory-hard and recommended                                         |
+| File storage local | Filesystem under `var/evidence`                  | custom                  | S3 only                          | Works offline; identical interface to the S3 adapter                                                |
+| File storage AWS   | Amazon S3 with presigned PUT                     | SDK v3                  | Through Lambda                   | Photos never traverse Lambda; cheaper and faster                                                    |
+| AI                 | Amazon Bedrock Nova Lite `amazon.nova-lite-v1:0` | SDK v3                  | Claude, OpenAI, local GGUF       | Multimodal, cheap ($0.06 input / $0.24 output per 1M tokens), ap-south-1 availability               |
+| AI fallback        | Deterministic rule engine                        | first-party             | none                             | The demo and the product must survive a Bedrock outage                                              |
+| Frontend           | React + Vite                                     | 18 + 5                  | Next.js, Remix                   | Matches the plan; simplest static deploy; no SSR needed for an authenticated app                    |
+| UI system          | Tailwind CSS + shadcn/ui (Radix primitives)      | 3.4 + latest            | MUI, Chakra, Ant                 | Own the code, accessible primitives, no runtime CSS-in-JS                                           |
+| Client data        | TanStack Query                                   | 5                       | Redux, Zustand, SWR              | Server state caching and invalidation without a global store                                        |
+| Forms              | react-hook-form + zod resolver                   | 7 + 3                   | Formik                           | Shared schema between client and server                                                             |
+| Routing            | React Router                                     | 6                       | file-based routing               | Explicit, testable                                                                                  |
+| Tests              | Vitest + Testing Library + fastify.inject        | 2                       | Jest, Playwright only            | Fast, ESM-native, one runner for all layers                                                         |
+| Lint and format    | ESLint + Prettier                                | 9 + 3                   | Biome                            | Standard, well supported                                                                            |
+| IaC                | AWS SAM                                          | latest                  | CDK, Terraform                   | Smallest surface for Lambda plus API plus DynamoDB plus S3; esbuild bundling                        |
+| Hosting            | AWS Amplify Hosting                              | managed                 | S3 and CloudFront hand-rolled    | Git deploys and a free tier for the judged period                                                   |
 
 ### 4.1 Why not a single Next.js app
 
@@ -443,15 +443,15 @@ Rules that keep the tree clean:
 
 ### 6.3 Authorization matrix
 
-| Resource | Landlord owner | Tenant member | Other authenticated | Anonymous |
-|---|---|---|---|---|
-| Property | read, update, delete | read via active tenancy | none | none |
-| Tenancy | read, update, cancel | read, accept, end | none | none |
-| Inspection | read, create | read, create | none | none |
-| Evidence | read, upload | read, upload | none | none |
-| Audit | run, read | run, read | none | none |
-| Statement | read, accept | read, accept | none | none |
-| Dispute | open, resolve | open, resolve | none | none |
+| Resource   | Landlord owner       | Tenant member           | Other authenticated | Anonymous |
+| ---------- | -------------------- | ----------------------- | ------------------- | --------- |
+| Property   | read, update, delete | read via active tenancy | none                | none      |
+| Tenancy    | read, update, cancel | read, accept, end       | none                | none      |
+| Inspection | read, create         | read, create            | none                | none      |
+| Evidence   | read, upload         | read, upload            | none                | none      |
+| Audit      | run, read            | run, read               | none                | none      |
+| Statement  | read, accept         | read, accept            | none                | none      |
+| Dispute    | open, resolve        | open, resolve           | none                | none      |
 
 ---
 
@@ -528,34 +528,34 @@ Base path: `/api`. All responses are JSON. Errors use a single shape.
 
 ### 9.1 Routes
 
-| Method | Path | Auth | Purpose |
-|---|---|---|---|
-| GET | `/api/health` | none | liveness, version, AI mode |
-| POST | `/api/auth/register` | none | create account with role and consents |
-| POST | `/api/auth/login` | none | create session |
-| POST | `/api/auth/logout` | session | revoke session |
-| GET | `/api/auth/session` | session | current user and CSRF token |
-| GET | `/api/properties` | session | landlord: own; tenant: properties of own tenancies |
-| POST | `/api/properties` | landlord | create property |
-| GET | `/api/properties/:id` | member | read property |
-| PATCH | `/api/properties/:id` | landlord owner | update property |
-| DELETE | `/api/properties/:id` | landlord owner | delete when no tenancies |
-| GET | `/api/tenancies` | session | tenancies where user is landlord or tenant |
-| POST | `/api/tenancies` | landlord | invite tenant by email |
-| GET | `/api/tenancies/:id` | member | full aggregate: property, inspections, evidence, statement, disputes |
-| POST | `/api/tenancies/:id/accept` | invited tenant | accept invitation |
-| POST | `/api/tenancies/:id/end` | member | end the tenancy |
-| POST | `/api/tenancies/:id/inspections` | member | create inspection area |
-| POST | `/api/tenancies/:id/evidence` | member | upload a photo (multipart) |
-| GET | `/api/tenancies/:id/evidence/:assetId` | member | download the original asset |
-| POST | `/api/tenancies/:id/audit` | member | run the audit, create a statement |
-| GET | `/api/tenancies/:id/statement` | member | latest statement with findings |
-| POST | `/api/tenancies/:id/statement/accept` | member | record acceptance |
-| POST | `/api/tenancies/:id/disputes` | member | open a dispute |
-| POST | `/api/tenancies/:id/disputes/:disputeId/resolve` | member | resolve |
-| GET | `/api/me/consents` | session | list consent records |
-| POST | `/api/me/consents` | session | record consent change |
-| GET | `/api/me/export` | session | DPDP data export (JSON) |
+| Method | Path                                             | Auth           | Purpose                                                              |
+| ------ | ------------------------------------------------ | -------------- | -------------------------------------------------------------------- |
+| GET    | `/api/health`                                    | none           | liveness, version, AI mode                                           |
+| POST   | `/api/auth/register`                             | none           | create account with role and consents                                |
+| POST   | `/api/auth/login`                                | none           | create session                                                       |
+| POST   | `/api/auth/logout`                               | session        | revoke session                                                       |
+| GET    | `/api/auth/session`                              | session        | current user and CSRF token                                          |
+| GET    | `/api/properties`                                | session        | landlord: own; tenant: properties of own tenancies                   |
+| POST   | `/api/properties`                                | landlord       | create property                                                      |
+| GET    | `/api/properties/:id`                            | member         | read property                                                        |
+| PATCH  | `/api/properties/:id`                            | landlord owner | update property                                                      |
+| DELETE | `/api/properties/:id`                            | landlord owner | delete when no tenancies                                             |
+| GET    | `/api/tenancies`                                 | session        | tenancies where user is landlord or tenant                           |
+| POST   | `/api/tenancies`                                 | landlord       | invite tenant by email                                               |
+| GET    | `/api/tenancies/:id`                             | member         | full aggregate: property, inspections, evidence, statement, disputes |
+| POST   | `/api/tenancies/:id/accept`                      | invited tenant | accept invitation                                                    |
+| POST   | `/api/tenancies/:id/end`                         | member         | end the tenancy                                                      |
+| POST   | `/api/tenancies/:id/inspections`                 | member         | create inspection area                                               |
+| POST   | `/api/tenancies/:id/evidence`                    | member         | upload a photo (multipart)                                           |
+| GET    | `/api/tenancies/:id/evidence/:assetId`           | member         | download the original asset                                          |
+| POST   | `/api/tenancies/:id/audit`                       | member         | run the audit, create a statement                                    |
+| GET    | `/api/tenancies/:id/statement`                   | member         | latest statement with findings                                       |
+| POST   | `/api/tenancies/:id/statement/accept`            | member         | record acceptance                                                    |
+| POST   | `/api/tenancies/:id/disputes`                    | member         | open a dispute                                                       |
+| POST   | `/api/tenancies/:id/disputes/:disputeId/resolve` | member         | resolve                                                              |
+| GET    | `/api/me/consents`                               | session        | list consent records                                                 |
+| POST   | `/api/me/consents`                               | session        | record consent change                                                |
+| GET    | `/api/me/export`                                 | session        | DPDP data export (JSON)                                              |
 
 ### 9.2 Request rules
 
@@ -630,16 +630,16 @@ Security is treated as a feature and tested like one.
 
 ### 10.8 Threat model summary
 
-| Threat | Control |
-|---|---|
-| Credential stuffing | Rate limit on login, generic errors, scrypt cost |
-| Session theft via XSS | httpOnly cookie, CSP, no token in JS storage |
-| CSRF | Session-bound double-submit token plus SameSite |
-| IDOR on tenancy data | Tenancy guard on every nested route |
-| Malicious upload | Mime magic-byte check, size limit, randomized keys, authenticated retrieval |
-| Resource abuse | Rate limits, audit quota per tenancy, payload limits |
-| Prompt injection through images | Output schema validation, advisory framing, human review threshold |
-| AI hallucination treated as fact | Confidence and review flags, advisory copy, dispute path |
+| Threat                           | Control                                                                     |
+| -------------------------------- | --------------------------------------------------------------------------- |
+| Credential stuffing              | Rate limit on login, generic errors, scrypt cost                            |
+| Session theft via XSS            | httpOnly cookie, CSP, no token in JS storage                                |
+| CSRF                             | Session-bound double-submit token plus SameSite                             |
+| IDOR on tenancy data             | Tenancy guard on every nested route                                         |
+| Malicious upload                 | Mime magic-byte check, size limit, randomized keys, authenticated retrieval |
+| Resource abuse                   | Rate limits, audit quota per tenancy, payload limits                        |
+| Prompt injection through images  | Output schema validation, advisory framing, human review threshold          |
+| AI hallucination treated as fact | Confidence and review flags, advisory copy, dispute path                    |
 
 ---
 
@@ -809,13 +809,13 @@ The rule from the audit: a test must import the code it claims to test.
 
 ### 15.1 Layers
 
-| Layer | Tool | What it proves |
-|---|---|---|
-| Domain unit | Vitest | paise math, deposit computation, benchmark capping, state rule selection, audit schema validation, fallback behavior |
-| Adapter contract | Vitest | local evidence store and S3 store satisfy the same interface; Bedrock output validation rejects malformed JSON and triggers fallback |
-| API integration | Vitest with `fastify.inject` | full request lifecycle: auth, authorization, validation, tenancy guard, evidence upload, audit, statement, dispute |
-| Web component | Vitest + Testing Library | real components render, forms validate, statement math renders, protected routes redirect |
-| End to end (manual and scripted) | curl script plus browser | the golden path works against a running server |
+| Layer                            | Tool                         | What it proves                                                                                                                       |
+| -------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Domain unit                      | Vitest                       | paise math, deposit computation, benchmark capping, state rule selection, audit schema validation, fallback behavior                 |
+| Adapter contract                 | Vitest                       | local evidence store and S3 store satisfy the same interface; Bedrock output validation rejects malformed JSON and triggers fallback |
+| API integration                  | Vitest with `fastify.inject` | full request lifecycle: auth, authorization, validation, tenancy guard, evidence upload, audit, statement, dispute                   |
+| Web component                    | Vitest + Testing Library     | real components render, forms validate, statement math renders, protected routes redirect                                            |
+| End to end (manual and scripted) | curl script plus browser     | the golden path works against a running server                                                                                       |
 
 ### 15.2 Coverage expectations
 
@@ -864,35 +864,35 @@ Seeds two accounts and one fully worked tenancy with move-in evidence and a pend
 
 ### 16.4 Useful scripts
 
-| Command | Effect |
-|---|---|
-| `pnpm dev` | run API and web together |
-| `pnpm build` | typecheck and build all packages |
-| `pnpm test` | run all Vitest suites |
-| `pnpm test:coverage` | coverage report |
-| `pnpm lint` | ESLint |
-| `pnpm format` | Prettier write |
-| `pnpm typecheck` | `tsc --noEmit` across packages |
-| `pnpm --filter @makaan/api seed` | seed demo data |
-| `pnpm e2e` | curl script against a running server |
+| Command                          | Effect                               |
+| -------------------------------- | ------------------------------------ |
+| `pnpm dev`                       | run API and web together             |
+| `pnpm build`                     | typecheck and build all packages     |
+| `pnpm test`                      | run all Vitest suites                |
+| `pnpm test:coverage`             | coverage report                      |
+| `pnpm lint`                      | ESLint                               |
+| `pnpm format`                    | Prettier write                       |
+| `pnpm typecheck`                 | `tsc --noEmit` across packages       |
+| `pnpm --filter @makaan/api seed` | seed demo data                       |
+| `pnpm e2e`                       | curl script against a running server |
 
 ### 16.5 Environment variables
 
 See `.env.example`. The important ones:
 
-| Variable | Purpose | Default |
-|---|---|---|
-| `PORT` | API port | 8787 |
-| `NODE_ENV` | environment | development |
-| `DATABASE_URL` | SQLite file path | `var/makaan.db` |
-| `EVIDENCE_DIR` | local evidence root | `var/evidence` |
-| `SESSION_SECRET` | server-side pepper for session hashing | generated in development, required in production |
-| `CORS_ORIGINS` | allowed origins, comma separated | `http://localhost:5173` |
-| `MAKAAN_AI_MODE` | `bedrock` or `deterministic` | `deterministic` |
-| `BEDROCK_REGION` | Bedrock region | `ap-south-1` |
-| `BEDROCK_MODEL_ID` | model id | `amazon.nova-lite-v1:0` |
-| `EVIDENCE_STORE` | `local` or `s3` | `local` |
-| `S3_BUCKET` | evidence bucket | empty |
+| Variable           | Purpose                                | Default                                          |
+| ------------------ | -------------------------------------- | ------------------------------------------------ |
+| `PORT`             | API port                               | 8787                                             |
+| `NODE_ENV`         | environment                            | development                                      |
+| `DATABASE_URL`     | SQLite file path                       | `var/makaan.db`                                  |
+| `EVIDENCE_DIR`     | local evidence root                    | `var/evidence`                                   |
+| `SESSION_SECRET`   | server-side pepper for session hashing | generated in development, required in production |
+| `CORS_ORIGINS`     | allowed origins, comma separated       | `http://localhost:5173`                          |
+| `MAKAAN_AI_MODE`   | `bedrock` or `deterministic`           | `deterministic`                                  |
+| `BEDROCK_REGION`   | Bedrock region                         | `ap-south-1`                                     |
+| `BEDROCK_MODEL_ID` | model id                               | `amazon.nova-lite-v1:0`                          |
+| `EVIDENCE_STORE`   | `local` or `s3`                        | `local`                                          |
+| `S3_BUCKET`        | evidence bucket                        | empty                                            |
 
 ---
 
@@ -902,16 +902,16 @@ Deployment is documented end to end so the judged build can move to AWS without 
 
 ### 17.1 Services and rationale
 
-| Service | Role | Cost note |
-|---|---|---|
-| AWS Amplify Hosting | serves the built SPA | free tier covers the judge period |
-| API Gateway HTTP API | public API | roughly 70 percent cheaper than REST API |
-| AWS Lambda (Node 20, one function) | API compute | free tier covers the demo many times over |
-| Amazon DynamoDB (on-demand) | persistence | pay per request, scales to zero |
-| Amazon S3 (versioned, SSE) | evidence originals | pennies at demo scale |
-| Amazon Bedrock (Nova Lite) | vision audit | about $0.10 for 500 audits |
-| Amazon Cognito | accounts | email and password only, no SMS |
-| CloudWatch Logs | logs, 3-day retention | pennies |
+| Service                            | Role                  | Cost note                                 |
+| ---------------------------------- | --------------------- | ----------------------------------------- |
+| AWS Amplify Hosting                | serves the built SPA  | free tier covers the judge period         |
+| API Gateway HTTP API               | public API            | roughly 70 percent cheaper than REST API  |
+| AWS Lambda (Node 20, one function) | API compute           | free tier covers the demo many times over |
+| Amazon DynamoDB (on-demand)        | persistence           | pay per request, scales to zero           |
+| Amazon S3 (versioned, SSE)         | evidence originals    | pennies at demo scale                     |
+| Amazon Bedrock (Nova Lite)         | vision audit          | about $0.10 for 500 audits                |
+| Amazon Cognito                     | accounts              | email and password only, no SMS           |
+| CloudWatch Logs                    | logs, 3-day retention | pennies                                   |
 
 ### 17.2 Deployment steps
 
@@ -1003,19 +1003,19 @@ Dates advance with each milestone so the history is plausible and ordered.
 
 Each milestone ends with a green test run and one conventional commit. Dates are assigned in order inside the window.
 
-| # | Milestone | Contents | Commit message | Date |
-|---|---|---|---|---|
-| 0 | Workspace and docs | root config, workspace files, LICENSE, gitignore, TECHNICAL.md | `chore: scaffold pnpm workspace and technical plan` | 2026-09-17 09:10 |
-| 1 | Domain core | types, money, benchmarks, state rules, deposit math, audit schema, fallback engine, unit tests | `feat(core): deposit audit domain, benchmarks and state rules` | 2026-09-17 21:40 |
-| 2 | API foundation | Fastify app, config, SQLite schema, mappers, errors, logger, health, tests | `feat(api): fastify server, sqlite store and request plumbing` | 2026-09-18 11:05 |
-| 3 | Auth and security | scrypt passwords, sessions, CSRF, auth plugin, guards, rate limits, helmet, tests | `feat(api): session auth, csrf and authorization guards` | 2026-09-18 18:20 |
-| 4 | Tenancy domain API | properties, tenancies, inspections, evidence upload and retrieval, tests | `feat(api): properties, tenancies, inspections and evidence` | 2026-09-19 00:45 |
-| 5 | Audit and settlement | audit engine selection, bedrock adapter, deterministic engine, statement, disputes, tests | `feat(api): advisory audit engine and deposit statements` | 2026-09-19 13:30 |
-| 6 | Web foundation | Vite, Tailwind, shadcn primitives, API client, auth screens, app shell, tests | `feat(web): vite app shell, design system and authentication` | 2026-09-19 22:15 |
-| 7 | Core product UI | dashboard, property, tenancy, capture, audit, statement, disputes, tests | `feat(web): deposit audit flow and settlement statement` | 2026-09-20 03:40 |
-| 8 | Brand and polish | SVG logo, favicon, landing page, accessibility pass, print styles | `feat(web): brand mark, landing page and accessibility polish` | 2026-09-20 09:25 |
-| 9 | Documentation | README with badges, LICENSE, docs, seed guide | `docs: professional readme, license and operating guides` | 2026-09-20 11:50 |
-| 10 | Verification | full test run, builds, local deploy, e2e script | `test: full local verification and e2e coverage` | 2026-09-20 13:15 |
+| #   | Milestone            | Contents                                                                                       | Commit message                                                 | Date             |
+| --- | -------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------- |
+| 0   | Workspace and docs   | root config, workspace files, LICENSE, gitignore, TECHNICAL.md                                 | `chore: scaffold pnpm workspace and technical plan`            | 2026-09-17 09:10 |
+| 1   | Domain core          | types, money, benchmarks, state rules, deposit math, audit schema, fallback engine, unit tests | `feat(core): deposit audit domain, benchmarks and state rules` | 2026-09-17 21:40 |
+| 2   | API foundation       | Fastify app, config, SQLite schema, mappers, errors, logger, health, tests                     | `feat(api): fastify server, sqlite store and request plumbing` | 2026-09-18 11:05 |
+| 3   | Auth and security    | scrypt passwords, sessions, CSRF, auth plugin, guards, rate limits, helmet, tests              | `feat(api): session auth, csrf and authorization guards`       | 2026-09-18 18:20 |
+| 4   | Tenancy domain API   | properties, tenancies, inspections, evidence upload and retrieval, tests                       | `feat(api): properties, tenancies, inspections and evidence`   | 2026-09-19 00:45 |
+| 5   | Audit and settlement | audit engine selection, bedrock adapter, deterministic engine, statement, disputes, tests      | `feat(api): advisory audit engine and deposit statements`      | 2026-09-19 13:30 |
+| 6   | Web foundation       | Vite, Tailwind, shadcn primitives, API client, auth screens, app shell, tests                  | `feat(web): vite app shell, design system and authentication`  | 2026-09-19 22:15 |
+| 7   | Core product UI      | dashboard, property, tenancy, capture, audit, statement, disputes, tests                       | `feat(web): deposit audit flow and settlement statement`       | 2026-09-20 03:40 |
+| 8   | Brand and polish     | SVG logo, favicon, landing page, accessibility pass, print styles                              | `feat(web): brand mark, landing page and accessibility polish` | 2026-09-20 09:25 |
+| 9   | Documentation        | README with badges, LICENSE, docs, seed guide                                                  | `docs: professional readme, license and operating guides`      | 2026-09-20 11:50 |
+| 10  | Verification         | full test run, builds, local deploy, e2e script                                                | `test: full local verification and e2e coverage`               | 2026-09-20 13:15 |
 
 ---
 
@@ -1043,16 +1043,16 @@ The project is done when:
 
 ## 24. Risks and mitigations
 
-| Risk | Severity | Mitigation |
-|---|---|---|
-| Bedrock model access blocked on a new account | High | Deterministic engine is the default until access is confirmed; fallback is a tested first-class path |
-| AWS cost leak | Medium | 1 USD budget alert, forbidden services list, three-day log retention, per-tenancy audit quota |
-| Node 26 `node:sqlite` differences | Low | The store is behind an interface; a fallback driver can be added without touching routes |
-| Upload size or type abuse | Medium | Magic-byte checks, hard size limits, rate limits, authenticated retrieval |
-| AI false positive blames a party | Medium | Advisory framing, confidence flags, review threshold, dispute flow |
-| History flagged as pre-event | Critical | Fresh orphan history, commits dated inside the window, no merge from the old branch |
-| Scope creep beyond the deposit loop | High | Section 1.3 is a hard exclusion list; the roadmap in PLAN.md handles everything else |
-| Demo dependency on a live model call | High | Deterministic fallback and a seeded scenario that works offline |
+| Risk                                          | Severity | Mitigation                                                                                           |
+| --------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| Bedrock model access blocked on a new account | High     | Deterministic engine is the default until access is confirmed; fallback is a tested first-class path |
+| AWS cost leak                                 | Medium   | 1 USD budget alert, forbidden services list, three-day log retention, per-tenancy audit quota        |
+| Node 26 `node:sqlite` differences             | Low      | The store is behind an interface; a fallback driver can be added without touching routes             |
+| Upload size or type abuse                     | Medium   | Magic-byte checks, hard size limits, rate limits, authenticated retrieval                            |
+| AI false positive blames a party              | Medium   | Advisory framing, confidence flags, review threshold, dispute flow                                   |
+| History flagged as pre-event                  | Critical | Fresh orphan history, commits dated inside the window, no merge from the old branch                  |
+| Scope creep beyond the deposit loop           | High     | Section 1.3 is a hard exclusion list; the roadmap in PLAN.md handles everything else                 |
+| Demo dependency on a live model call          | High     | Deterministic fallback and a seeded scenario that works offline                                      |
 
 ---
 
@@ -1060,37 +1060,37 @@ The project is done when:
 
 ### 25.1 Environment variables (full)
 
-| Name | Required | Default | Notes |
-|---|---|---|---|
-| `NODE_ENV` | no | development | production enables Secure cookies |
-| `PORT` | no | 8787 | API port |
-| `LOG_LEVEL` | no | info | pino level |
-| `DATABASE_URL` | no | var/makaan.db | SQLite path |
-| `EVIDENCE_DIR` | no | var/evidence | local evidence root |
-| `EVIDENCE_STORE` | no | local | local or s3 |
-| `SESSION_SECRET` | production | generated | pepper for session token hashing |
-| `SESSION_TTL_DAYS` | no | 7 | sliding session lifetime |
-| `CORS_ORIGINS` | no | http://localhost:5173 | comma separated allow list |
-| `MAKAAN_AI_MODE` | no | deterministic | deterministic or bedrock |
-| `BEDROCK_REGION` | no | ap-south-1 | Bedrock region |
-| `BEDROCK_MODEL_ID` | no | amazon.nova-lite-v1:0 | model id |
-| `S3_BUCKET` | s3 mode | empty | evidence bucket |
-| `AWS_REGION` | no | ap-south-1 | SDK region |
-| `AUDIT_QUOTA_PER_TENANCY` | no | 20 | anti-abuse limit |
+| Name                      | Required   | Default               | Notes                             |
+| ------------------------- | ---------- | --------------------- | --------------------------------- |
+| `NODE_ENV`                | no         | development           | production enables Secure cookies |
+| `PORT`                    | no         | 8787                  | API port                          |
+| `LOG_LEVEL`               | no         | info                  | pino level                        |
+| `DATABASE_URL`            | no         | var/makaan.db         | SQLite path                       |
+| `EVIDENCE_DIR`            | no         | var/evidence          | local evidence root               |
+| `EVIDENCE_STORE`          | no         | local                 | local or s3                       |
+| `SESSION_SECRET`          | production | generated             | pepper for session token hashing  |
+| `SESSION_TTL_DAYS`        | no         | 7                     | sliding session lifetime          |
+| `CORS_ORIGINS`            | no         | http://localhost:5173 | comma separated allow list        |
+| `MAKAAN_AI_MODE`          | no         | deterministic         | deterministic or bedrock          |
+| `BEDROCK_REGION`          | no         | ap-south-1            | Bedrock region                    |
+| `BEDROCK_MODEL_ID`        | no         | amazon.nova-lite-v1:0 | model id                          |
+| `S3_BUCKET`               | s3 mode    | empty                 | evidence bucket                   |
+| `AWS_REGION`              | no         | ap-south-1            | SDK region                        |
+| `AUDIT_QUOTA_PER_TENANCY` | no         | 20                    | anti-abuse limit                  |
 
 ### 25.2 Core module map
 
-| Module | Responsibility |
-|---|---|
-| `types.ts` | entities, enums, DTOs, request and response shapes |
-| `money.ts` | parse, format, add, and clamp paise; rupee formatting |
-| `benchmarks.ts` | versioned city and item catalogue with ranges and sources |
-| `state-rules.ts` | state regimes and deposit cap warnings |
-| `deposit.ts` | statement computation from findings |
-| `audit.ts` | audit input and output schema, validation, review flags |
-| `fallback.ts` | deterministic engine |
-| `copy.ts` | advisory strings and disclaimers |
-| `ids.ts` | id generation and hashing helpers |
+| Module           | Responsibility                                            |
+| ---------------- | --------------------------------------------------------- |
+| `types.ts`       | entities, enums, DTOs, request and response shapes        |
+| `money.ts`       | parse, format, add, and clamp paise; rupee formatting     |
+| `benchmarks.ts`  | versioned city and item catalogue with ranges and sources |
+| `state-rules.ts` | state regimes and deposit cap warnings                    |
+| `deposit.ts`     | statement computation from findings                       |
+| `audit.ts`       | audit input and output schema, validation, review flags   |
+| `fallback.ts`    | deterministic engine                                      |
+| `copy.ts`        | advisory strings and disclaimers                          |
+| `ids.ts`         | id generation and hashing helpers                         |
 
 ### 25.3 Glossary
 
@@ -1115,4 +1115,4 @@ The project is done when:
 
 ---
 
-*Makaan. Your home. Your proof.*
+_Makaan. Your home. Your proof._

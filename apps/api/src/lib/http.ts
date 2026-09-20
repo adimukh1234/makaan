@@ -3,9 +3,7 @@ import { failure } from './errors';
 /** Parses a value with a zod schema and raises a typed validation error. */
 export function parseOrThrow<T>(
   schema: {
-    safeParse: (
-      value: unknown,
-    ) =>
+    safeParse: (value: unknown) =>
       | { success: true; data: T }
       | {
           success: false;

@@ -39,7 +39,11 @@ describe('auth', () => {
   it('never returns the password hash', async () => {
     ctx = await createTestContext();
     const client = newClient();
-    const result = await register(ctx, client, { email: 'a@b.test', name: 'Anita', role: 'landlord' });
+    const result = await register(ctx, client, {
+      email: 'a@b.test',
+      name: 'Anita',
+      role: 'landlord',
+    });
     expect(JSON.stringify(result.body)).not.toContain('scrypt$');
     expect(result.body.user.passwordHash).toBeUndefined();
   });

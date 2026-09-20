@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { Classification, EngineName, Severity } from './types';
+import type { EngineName, Severity } from './types';
 
 /** Audit input and output contract. This is the boundary between the API and
  * any engine, and the shape the model must return. */
